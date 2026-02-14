@@ -51,9 +51,16 @@
   * {
     @apply border-border;
   }
+  html {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
   }
 }
 
@@ -159,16 +166,25 @@
   animation: slide-up 0.6s ease-out forwards;
 }
 
-/* Polaroid card style */
+/* Polaroid card style — responsive */
 .polaroid {
   background: white;
-  padding: 0.75rem 0.75rem 2.5rem;
+  padding: 0.5rem 0.5rem 1.75rem;
   box-shadow: 0 4px 20px hsl(345 60% 65% / 0.15), 0 1px 4px hsl(0 0% 0% / 0.05);
   border-radius: 4px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+@media (min-width: 640px) {
+  .polaroid {
+    padding: 0.75rem 0.75rem 2.5rem;
+  }
+}
 .polaroid:hover {
   transform: rotate(-2deg) scale(1.03);
   box-shadow: 0 8px 30px hsl(345 60% 65% / 0.25);
+}
+@media (hover: none) {
+  .polaroid:hover {
+    transform: none;
+  }
 }

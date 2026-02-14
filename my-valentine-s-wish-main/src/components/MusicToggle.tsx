@@ -32,7 +32,7 @@ const MusicToggle = () => {
   return (
     <button
       onClick={toggle}
-      className="fixed top-4 right-4 z-50 p-3 rounded-full bg-card/80 backdrop-blur-sm border border-border shadow-md hover:scale-110 transition-all duration-300"
+      className="fixed z-50 p-3 rounded-full bg-card/80 backdrop-blur-sm border border-border shadow-md hover:scale-110 transition-all duration-300 touch-manipulation min-w-[48px] min-h-[48px] flex items-center justify-center top-[max(1rem,env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))]"
       aria-label={playing ? "Mute music" : "Play music"}
     >
       {playing ? (

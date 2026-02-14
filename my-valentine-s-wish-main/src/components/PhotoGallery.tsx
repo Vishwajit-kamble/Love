@@ -63,14 +63,14 @@ const PhotoGallery = ({ visible }: PhotoGalleryProps) => {
   if (!visible) return null;
 
   return (
-    <div className="animate-slide-up w-full max-w-2xl mx-auto px-4">
-      <h2 className="font-cursive text-3xl md:text-4xl text-center text-foreground mb-6">
+    <div className="animate-slide-up w-full max-w-2xl mx-auto px-3 sm:px-4">
+      <h2 className="font-cursive text-2xl sm:text-3xl md:text-4xl text-center text-foreground mb-4 sm:mb-6">
         Our Moments Together 💫
       </h2>
 
       {/* Main image with arrows */}
       <div
-        className="relative mx-auto overflow-hidden rounded-xl shadow-lg bg-card group"
+        className="relative mx-auto overflow-hidden rounded-lg sm:rounded-xl shadow-lg bg-card group"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
@@ -90,32 +90,32 @@ const PhotoGallery = ({ visible }: PhotoGalleryProps) => {
         </div>
 
         {/* Caption overlay */}
-        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/50 to-transparent p-4">
-          <p className="font-cursive text-white text-xl text-center drop-shadow">
+        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/50 to-transparent p-3 sm:p-4">
+          <p className="font-cursive text-white text-base sm:text-lg md:text-xl text-center drop-shadow">
             {photos[current].caption}
           </p>
         </div>
 
-        {/* Left arrow */}
+        {/* Left arrow — always visible on touch, hover on desktop */}
         <button
           onClick={prev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-card/70 backdrop-blur-sm border border-border shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:scale-110 hover:bg-card z-10"
+          className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 p-2.5 sm:p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-card/80 backdrop-blur-sm border border-border shadow-md opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hover:scale-110 hover:bg-card z-10 touch-manipulation"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="w-5 h-5 text-foreground" />
+          <ChevronLeft className="w-5 h-5 text-foreground shrink-0" />
         </button>
 
         {/* Right arrow */}
         <button
           onClick={next}
-          className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-card/70 backdrop-blur-sm border border-border shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:scale-110 hover:bg-card z-10"
+          className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 p-2.5 sm:p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-card/80 backdrop-blur-sm border border-border shadow-md opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hover:scale-110 hover:bg-card z-10 touch-manipulation"
           aria-label="Next slide"
         >
-          <ChevronRight className="w-5 h-5 text-foreground" />
+          <ChevronRight className="w-5 h-5 text-foreground shrink-0" />
         </button>
 
         {/* Dot indicators */}
-        <div className="absolute bottom-14 inset-x-0 flex justify-center gap-2 z-10">
+        <div className="absolute bottom-12 sm:bottom-14 inset-x-0 flex justify-center gap-1.5 sm:gap-2 z-10">
           {photos.map((_, i) => (
             <button
               key={i}
@@ -131,22 +131,22 @@ const PhotoGallery = ({ visible }: PhotoGalleryProps) => {
         </div>
       </div>
 
-      {/* Thumbnails */}
-      <div className="flex justify-center gap-2 md:gap-3 mt-4 flex-wrap">
+      {/* Thumbnails — scroll on small screens if needed */}
+      <div className="flex justify-start sm:justify-center gap-1.5 sm:gap-2 md:gap-3 mt-3 sm:mt-4 overflow-x-auto overflow-y-hidden pb-1 -mx-1 px-1 md:flex-wrap md:overflow-visible">
         {photos.map((photo, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`rounded-lg overflow-hidden border-2 transition-all duration-300 hover:shadow-lg hover:scale-105 ${
+            className={`flex-shrink-0 rounded-md sm:rounded-lg overflow-hidden border-2 transition-all duration-300 hover:shadow-lg hover:scale-105 touch-manipulation min-w-[44px] min-h-[44px] ${
               i === current
-                ? "border-primary scale-110 shadow-md shadow-primary/20"
+                ? "border-primary scale-105 sm:scale-110 shadow-md shadow-primary/20"
                 : "border-transparent opacity-60 hover:opacity-100 hover:border-border"
             }`}
           >
             <img
               src={photo.src}
               alt={photo.caption}
-              className="w-12 h-12 md:w-14 md:h-14 object-cover"
+              className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-cover"
               onError={(e) => {
                 e.currentTarget.src = BLACK_PLACEHOLDER;
               }}
