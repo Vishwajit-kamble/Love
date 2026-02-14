@@ -1,0 +1,13 @@
+{
+  "name": "my-valentine-s-wish-main",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix my-valentine-s-wish-main",
+    "build": "npm run build --prefix my-valentine-s-wish-main",
+    "build:dev": "npm run build:dev --prefix my-valentine-s-wish-main",
+    "lint": "npm run lint --prefix my-valentine-s-wish-main",
+    "preview": "npm run preview --prefix my-valentine-s-wish-main",
+    "test": "npm run test --prefix my-valentine-s-wish-main",
+    "test:watch": "npm run test:watch --prefix my-valentine-s-wish-main"
+  }
+}
